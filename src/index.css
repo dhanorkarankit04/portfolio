@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #0b1020;
+  color: #f8fafc;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(196, 181, 253, 0.3);
+  color: #f8fafc;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1020;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #172033, #2a3650);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2a3650, #3b4a6b);
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(120deg, #a8e6e1, #c4b5fd 45%, #a5c9ff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-pan 8s ease infinite;
+  }
+
+  .glass {
+    background: rgba(23, 32, 51, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(168, 230, 225, 0.08);
+  }
+
+  .glass-strong {
+    background: rgba(17, 24, 39, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(168, 230, 225, 0.1);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 40px -10px rgba(168, 230, 225, 0.4);
+  }
+  .glow-lavender {
+    box-shadow: 0 0 40px -10px rgba(196, 181, 253, 0.4);
+  }
+  .glow-blue {
+    box-shadow: 0 0 40px -10px rgba(165, 201, 255, 0.4);
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(168, 230, 225, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168, 230, 225, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #a5c9ff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
